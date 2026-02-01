@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10a37f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a7f64;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="45" fill="url(#grad)"/>
+  <!-- Book/Document icon -->
+  <g fill="white">
+    <!-- Book base -->
+    <rect x="25" y="28" width="50" height="44" rx="3" fill="white"/>
+    <!-- Book spine -->
+    <rect x="25" y="28" width="8" height="44" rx="2" fill="#e0e0e0"/>
+    <!-- Text lines -->
+    <rect x="38" y="38" width="30" height="3" rx="1" fill="#10a37f"/>
+    <rect x="38" y="46" width="25" height="2" rx="1" fill="#888"/>
+    <rect x="38" y="52" width="28" height="2" rx="1" fill="#888"/>
+    <rect x="38" y="58" width="20" height="2" rx="1" fill="#888"/>
+    <!-- Paragraph symbol § -->
+    <text x="45" y="75" font-family="serif" font-size="14" font-weight="bold" fill="#10a37f">§</text>
+  </g>
+</svg>
