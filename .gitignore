@@ -66,3 +66,5 @@ data/mevzuat/*.pdf
 tmp/
 temp/
 *.tmp
+
+.docx
