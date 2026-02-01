@@ -1,0 +1,68 @@
+# Claude Code
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+.env
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Node.js
+node_modules/
+.npm
+.pnpm-store/
+
+# Vite / React
+frontend/dist/
+frontend/.vite/
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Qdrant storage (çok büyük, her kullanıcı kendi oluşturmalı)
+qdrant_storage/
+
+# Sensitive files
+.env
+.env.local
+.env.production
+*.pem
+*.key
+
+# Data files (çok büyük, kullanıcılar kendi indirmeli)
+data/mevzuat/*.pdf
+
+# Temporary
+tmp/
+temp/
+*.tmp

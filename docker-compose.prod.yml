@@ -1,0 +1,106 @@
+version: '3.8'
+
+# Production deployment with Redis queue and rate limiting
+# Usage: docker-compose -f docker-compose.prod.yml up -d
+
+services:
+  # 1. Vector Database
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+  # 2. Redis (Queue & Rate Limiting)
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - rag-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # 3. Backend API
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - QDRANT_URL=http://qdrant:6333
+      - COLLECTION_NAME=mevzuat_db
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - REDIS_URL=redis://redis:6379/0
+      - RATE_LIMIT=10/minute
+      - RATE_LIMIT_STORAGE=redis://redis:6379/1
+    volumes:
+      - ./data:/data
+    depends_on:
+      - qdrant
+      - redis
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+  # 4. Celery Worker (Background Task Processing)
+  celery_worker:
+    build: ./backend
+    command: celery -A app.queue.tasks worker --loglevel=info --concurrency=2
+    environment:
+      - QDRANT_URL=http://qdrant:6333
+      - COLLECTION_NAME=mevzuat_db
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./data:/data
+    depends_on:
+      - redis
+      - qdrant
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+  # 5. Frontend UI
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  # Production'da 80 portu
+    depends_on:
+      - backend
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+  # 6. Nginx Reverse Proxy (Optional - for SSL)
+  # nginx:
+  #   image: nginx:alpine
+  #   ports:
+  #     - "443:443"
+  #     - "80:80"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #     - ./ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - frontend
+  #     - backend
+  #   networks:
+  #     - rag-network
+
+networks:
+  rag-network:
+    driver: bridge
+
+volumes:
+  redis_data:

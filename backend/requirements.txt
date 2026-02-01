@@ -1,0 +1,18 @@
+fastapi
+uvicorn
+langchain
+langchain-community
+langchain-openai
+langchain-huggingface
+langchain-qdrant
+langchain-ollama
+qdrant-client
+pypdf
+python-dotenv
+tiktoken
+sentence-transformers
+
+# Rate Limiting & Queue
+slowapi
+celery[redis]
+redis
