@@ -16,8 +16,6 @@ A **Retrieval-Augmented Generation (RAG)** powered AI assistant for Turkish legi
   <img src="docs/demo.gif" alt="Demo" width="800"/>
 </div>
 
-**Live Demo:** [Coming Soon]
-
 ---
 
 ## ✨ Key Features
