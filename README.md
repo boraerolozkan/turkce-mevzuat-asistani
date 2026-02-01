@@ -8,8 +8,6 @@
 
 A **Retrieval-Augmented Generation (RAG)** powered AI assistant for Turkish legislation. Ask questions about Turkish laws and regulations in natural language and get accurate, source-cited answers.
 
-[🇹🇷 Türkçe](#türkçe) | [🇬🇧 English](#english)
-
 ---
 
 ## 🎯 Demo
