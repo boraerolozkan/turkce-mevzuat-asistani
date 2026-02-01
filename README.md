@@ -38,14 +38,14 @@ A **Retrieval-Augmented Generation (RAG)** powered AI assistant for Turkish legi
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                           USER INTERFACE                              │
-│                    React + Vite (Port 5173)                          │
+│                           USER INTERFACE                            │
+│                    React + Vite (Port 5173)                         │
 └─────────────────────────────────┬───────────────────────────────────┘
                                   │ HTTP/REST
                                   ▼
 ┌─────────────────────────────────────────────────────────────────────┐
-│                           BACKEND API                                 │
-│                    FastAPI + LangChain (Port 8000)                   │
+│                           BACKEND API                               │
+│                    FastAPI + LangChain (Port 8000)                  │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                  │
 │  │   Routers   │  │     RAG     │  │  Ingestion  │                  │
 │  │  /api/chat  │  │  Pipeline   │  │   Pipeline  │                  │
@@ -85,7 +85,7 @@ User Question
          │
          ▼
 ┌─────────────────┐
-│ 4. LLM         │  Generate answer using Llama 3.1
+│ 4. LLM          │  Generate answer using Llama 3.1
 │    Generation   │  with context and question
 └────────┬────────┘
          │
