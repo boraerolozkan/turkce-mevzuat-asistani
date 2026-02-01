@@ -442,9 +442,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Bora Erol Özkan**
 
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/YOUR_PROFILE)
-- Email: your.email@example.com
+- GitHub: [@YOUR_USERNAME](https://github.com/boraerolozkan)
+- LinkedIn: [Your LinkedIn](https://linkedin.com/in/boraerolozkan)
+- Email: boraerolozkan@gmail.com
 
 ---
 
